@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+    <style>
+        /* * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        } */
+
+        .heading {
+            text-align: center;
+        }
+
+        .container {
+            border: 2px solid rgb(99, 97, 97);
+            box-shadow: 4px 4px rgb(178, 173, 173);
+            border-radius: 4px;
+            width: 300px;
+            height: 350px;
+            margin: auto;
+            top: 50px;
+            position: relative;
+        }
+
+        .text {
+            margin: 10px;
+            padding: 3px;
+            width: 180px;
+        }
+
+        #form {
+            padding: 15px;
+        }
+
+        #task {
+            padding: 5px;
+        }
+
+        #day {
+            padding: 5px;
+            width: 192px;
+            margin-left: 18px;
+        }
+
+        #time {
+            padding: 5px;
+            margin-left: 12px;
+        }
+
+        .add-task {
+            padding: 5px;
+            width: 125px;
+            top: 54px;
+            position: relative;
+            margin-left: 73px;
+        }
+
+        .tasklist_container {
+            top: 70px;
+            position: relative;
+            padding: 5px;
+        }
+
+        #task_list {
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            margin: 5px;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="heading">To-Do List</h2>
+        <form action="" id="form">
+            TASK:<input type="text" class="text" id="task" placeholder="Add Task.."> <br>
+            DAY:<select name="day" id="day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+
+            </select><br> <br>
+            TIME:<input type="time" name="time" id="time"><br>
+            <input type="submit" value="ADD TASK" class="add-task" name="submit" onclick="newElement(); return false" />
+
+        </form>
+    </div>
+    <div class="tasklist_container">
+        <ol id="task_list">
+            <br>
+        </ol>
+    </div>
+</body>
+<script>
+    function newElement() {
+        var li = document.createElement("li");
+        var inputvalueitem = document.getElementById("task").value;
+        var inputvaluedays = document.getElementById("day").value;
+        var inputvaluetime = document.getElementById("time").value;
+        var m = document.createTextNode(inputvalueitem);
+        var d = document.createTextNode(inputvaluedays);
+        var t=document.createTextNode(inputvaluetime);
+
+        li.append(d);
+        li.append(" => ");
+        li.append(t);
+        li.append("AM => ");
+        li.append(m);
+        // li.append("\n");
+
+        if (inputvalueitem === '') {
+            alert("please write something here");
+        }
+        else {
+            document.getElementById("task_list").appendChild(li);
+        }
+
+        document.getElementById("task").value = " ";
+    }
+</script>
+
+</html>
